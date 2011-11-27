@@ -194,6 +194,8 @@ struct mntent  *HRFS_entry;
 #define MNTTYPE_FAT32	"vfat"
 #define MNTTYPE_NTFS	"ntfs"
 #define MNTTYPE_NFS4	"nfs4"
+#define MNTTYPE_OCFS	"ocfs"
+#define MNTTYPE_OCFS2	"ocfs2"
 #endif	/* linux */
 
 #endif
@@ -554,6 +556,14 @@ var_hrfilesys(struct variable *vp,
 #ifdef MNTTYPE_NTFS
         else if (!strcmp(mnt_type, MNTTYPE_NTFS))
             fsys_type_id[fsys_type_len - 1] = 9;
+#endif
+#ifdef MNTTYPE_OCFS
+        else if (!strcmp(mnt_type, MNTTYPE_OCFS))
+            fsys_type_id[fsys_type_len - 1] = 26;
+#endif
+#ifdef MNTTYPE_OCFS2
+        else if (!strcmp(mnt_type, MNTTYPE_OCFS2))
+            fsys_type_id[fsys_type_len - 1] = 26;
 #endif
         else
             fsys_type_id[fsys_type_len - 1] = 1;        /* Other */
